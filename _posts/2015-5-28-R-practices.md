@@ -1,6 +1,6 @@
 ---
 layout: post
-title: R tip #1: Use colnames instead of column numbers
+title: R tip \#1: Use colnames instead of column numbers
 ---
 
 I recently started working on a Data Science project with and old friend
