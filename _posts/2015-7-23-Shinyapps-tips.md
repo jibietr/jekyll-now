@@ -7,7 +7,7 @@ I have gone through inumerable issues trying to use [shinyapps.io](http://www.sh
 web app that would work fine when deploying it locally but would fail to work 
 after uploading it to Rstudio's servers. While [Shinyapps.io's get started guide](http://shiny.rstudio.com/articles/shinyapps.html)
 is great for a quick start, it is quite limited in terms of documenting basic
-useful practices that can save a lot of time. This is my list:
+useful practices that can save a lot of time. These are some tips:
 
 
 **tip #1: use the `appFile` parameter in `shinyapps::deployApp`**
@@ -27,7 +27,7 @@ shinyapps::deployApp(appFiles=app.files,appName='my_app_name')
 see a related post (here)[http://stackoverflow.com/questions/26316192/uploading-csv-file-to-shinyapps-io]
 
 
-** tip #2: `showLogs` is your friend**
+**tip #2: `showLogs` is your friend**
 
 this is quite basic, but I only got to knew about it when I 
 started getting into complex deployment errors. Use it after deploying
@@ -37,7 +37,7 @@ to monitor the deployment result:
 shinyapps::showLogs(appName='my_app_name')
 ```
 
-tip #3: `require` all the libraries you need
+**tip #3: `require` all the libraries you need**
 
 I run into issues with libraries that were not available in shinyapps.io
 at running time, most likely to broken dependencies of some packages.
@@ -47,7 +47,7 @@ to check what are the libraries under `other attached packages` and
 use `require` to explicitly load them in your `.Rmd` file.
 
 
-tip #4: Use options(mc.cores=1) when using `tm` and `parallel` package
+**tip #4: Use options(mc.cores=1) when using `tm` and `parallel` package**
 
 Again, I found several different errors when using functions from 
 the `tm` package that depend on `parallel`. Using `options(mc.cores=1)` solves
