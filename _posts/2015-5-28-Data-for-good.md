@@ -1,9 +1,9 @@
 ---
 layout: post
-title: \#data4good link repository
+title: #data4good link repository
 ---
 
-
+A list of interesting links:
 
 * [United nations blog pulse](http://www.unglobalpulse.org/pulse-labs)
 
