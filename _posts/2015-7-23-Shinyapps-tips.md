@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Shinyapps.io tips
+title: Tips using Shinyapps.io 
 ---
 
 I have gone through inumerable issues trying to use [shinyapps.io](http://www.shinyapps.io/) to deploy an Rmarkdown
@@ -24,13 +24,13 @@ app.files <- list('main_file.Rmd',
 shinyapps::deployApp(appFiles=app.files,appName='my_app_name')
 ```
 
-see a related post (here)[http://stackoverflow.com/questions/26316192/uploading-csv-file-to-shinyapps-io]
+this is related what is discussed [here](http://stackoverflow.com/questions/26316192/uploading-csv-file-to-shinyapps-io)
 
 
 **tip #2: `showLogs` is your friend**
 
-this is quite basic, but I only got to knew about it when I 
-started getting into complex deployment errors. Use it after deploying
+this is quite basic, but I only got to know about it after I 
+started getting into erros difficult to debug. Use it after `deployApp`
 to monitor the deployment result:
 
 ```R
@@ -43,22 +43,23 @@ I run into issues with libraries that were not available in shinyapps.io
 at running time, most likely to broken dependencies of some packages.
 A way to avoid this is to explicitly load all the libraries
 that you are using in your local session. You use `showInfo()`
-to check what are the libraries under `other attached packages` and
-use `require` to explicitly load them in your `.Rmd` file.
+to check what are the libraries under `other attached packages`, and 
+then use `require` to explicitly load them in your `.Rmd` file.
 
 
-**tip #4: Use options(mc.cores=1) when using `tm` and `parallel` package**
+**tip #4: `options(mc.cores=1)` is magic when using `tm` and `parallel` package**
 
 Again, I found several different errors when using functions from 
 the `tm` package that depend on `parallel`. Using `options(mc.cores=1)` solves
-the problem in one shot. I experienced this with larger data files...
-
-An alternative to this is to use lazy=TRUE
-[here](http://stackoverflow.com/questions/25069798/r-tm-in-mclapplycontentx-fun-all-scheduled-cores-encountered-errors)
-
-
-This goes on the line of what is discussed here: [here][http://stackoverflow.com/questions/26834576/big-text-corpus-breaks-tm-map),
+the problem in one shot. Some of these issues, like the ones discussed 
+[here](http://stackoverflow.com/questions/25069798/r-tm-in-mclapplycontentx-fun-all-scheduled-cores-encountered-errors),
+[here](http://stackoverflow.com/questions/26834576/big-text-corpus-breaks-tm-map), or 
 [here](http://stackoverflow.com/questions/17703553/bigrams-instead-of-single-words-in-termdocument-matrix-using-r-and-rweka)
+seem to appear when processing larger data files. It still have to find out the why.
+
+
+
+
 
 
 
